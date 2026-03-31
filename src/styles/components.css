@@ -225,6 +225,32 @@
     box-shadow: 0 8px 25px rgba(245, 176, 65, 0.4);
 }
 
+.btn-gold-outline {
+    background-color: transparent;
+    color: var(--accent-gold, #e2b34a);
+    border: 2px solid var(--accent-gold);
+    /* Match btn-red sizes and padding */
+    padding: 1vh 2vw;
+    min-width: 160px;
+    max-width: 90%;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 700;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-gold-outline:hover {
+    background-color: var(--accent-gold);
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(226, 179, 74, 0.3);
+}
+
 @media (max-width: 600px) {
     .hero-section {
         min-height: 109.25vw;
