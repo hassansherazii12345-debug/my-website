@@ -87,9 +87,6 @@ function App() {
 
   return (
     <div className="app-container" style={{ position: 'relative' }}>
-      {/* Global Background Layer */}
-      <div id="bg-layer"></div>
-
       {/* Page-wide floating ingredients that scroll with content */}
       <PageFloatingIngredients />
 
