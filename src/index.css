@@ -43,10 +43,11 @@ html {
 body::before {
   content: "";
   position: fixed;
-  top: -10vh; /* Small safe bleed */
-  bottom: -10vh;
-  left: -5vw;
-  right: -5vw;
+  /* Brute force physical pixel bleeds to permanently override Safari's 'vh' miscalculation under the URL bar */
+  top: -200px; 
+  bottom: -200px;
+  left: -100px;
+  right: -100px;
   z-index: -10;
   background-image: url('/assets/slate_bg.jpg');
   background-size: cover;
