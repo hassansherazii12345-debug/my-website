@@ -36,11 +36,11 @@ html {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0a0a0c; 
+  background-color: #000; 
   /* INDUSTRY STANDARD METHOD: Apply bg directly to html/body */
   background-image: url('/assets/slate_bg.jpg');
-  background-size: cover;
-  background-position: center top;
+  background-size: cover; /* Forces the image to perfectly cover the glass */
+  background-position: center bottom; /* Anchored to bottom for floor realism */
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
