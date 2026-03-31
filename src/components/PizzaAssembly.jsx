@@ -102,27 +102,29 @@ const PizzaAssembly = () => {
                     lazy: true 
                 }, 11.6);
 
-            // 11. BOX FADES INTO SCOOTER & TIRE MARKS STOP AT CENTER
-            mainTl.to(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { opacity: 0, duration: 0.2 }, 12.9)
-                .to('.tire-marks-container', { opacity: 1, duration: 0.1 }, 10.9)
-                // Match Arrival: Tracks appear ONLY when the scooter actually hits the top of the screen (~11.6)
-                .to('.tire-marks-container', { clipPath: 'inset(0 0 51.3% 0)', duration: 1.15, ease: 'power2.out' }, 11.75)
-                .to('.tire-mark-pattern', { backgroundPositionY: '-60px', duration: 1.15, ease: 'power2.out' }, 11.75);
+            // 11. TIRE MARKS - PHYSICALLY LOCKED TO SCOOTER ARRIVAL
+            mainTl.to('.tire-marks-container', { opacity: 1, duration: 0.01 }, 11.6)
+                .to('.tire-marks-container', { 
+                    clipPath: 'inset(0 0 50% 0)', // Stop reveal at the exact horizontal center of the scooter
+                    duration: 2.0, 
+                    ease: 'power2.out' 
+                }, 11.6)
+                .to('.tire-mark-pattern', { 
+                    backgroundPositionY: '-120px', 
+                    duration: 2.0, 
+                    ease: 'power2.out' 
+                }, 11.6);
  
-            // 12. SCOOTER REMAINS CENTERED & STILL ROLLING
-            // The scooter and its tire marks now focus in the center, and the pattern keeps rolling.
-            // ADDED: Scroll Buffer - Keeps the scooter pinned while tread pattern keeps 'moving'
+            // 12. CONTINUOUS ROLLING EFFECT WHILE PINNED
+            // After the scooter arrives, the tracks keep 'moving' beneath it
             mainTl.to('.tire-mark-pattern', { 
                 backgroundPositionY: '-400px', 
                 duration: 2.5, 
                 ease: 'none' 
-            }, 12.9); 
+            }, 13.6); 
 
-
-
-
-
-
+            // 13. FINAL BOX FADE
+            mainTl.to(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { opacity: 0, duration: 0.2 }, 12.9);
 
         }, sectionRef);
 
