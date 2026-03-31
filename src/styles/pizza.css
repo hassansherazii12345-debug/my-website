@@ -113,10 +113,11 @@
 
 .assembly-text p {
     color: var(--accent-red);
-    font-weight: 500;
-    letter-spacing: 2px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
 }
 
 /* --- Background Moving Text --- */
