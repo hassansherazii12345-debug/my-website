@@ -55,12 +55,17 @@ body {
   position: relative;
 }
 
+/* ==========================================================================
+   MANUAL BACKGROUND CONTROLS (Adjust these numbers to fix the gap!)
+   ========================================================================== */
 #bg-layer {
   position: fixed;
-  top: -250px !important;
-  bottom: -250px !important;
-  left: -250px !important;
-  right: -250px !important;
+  /* Increase these negative numbers (e.g., -500px) to bleed further past gaps */
+  top: -300px !important;
+  bottom: -300px !important;
+  left: -300px !important;
+  right: -300px !important;
+  
   width: auto !important;
   height: auto !important;
   z-index: -1;
@@ -69,16 +74,6 @@ body {
   background-position: center !important;
   background-repeat: no-repeat;
   pointer-events: none;
-}
-
-/* Specific mobile override for background sizing and safe-area fix */
-@media (max-width: 768px) {
-  #bg-layer {
-    top: -250px !important;
-    bottom: -250px !important;
-    left: -250px !important;
-    right: -250px !important;
-  }
 }
 
 h1,
