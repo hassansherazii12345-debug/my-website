@@ -29,24 +29,23 @@
   padding: 0;
 }
 
-html {
-  color-scheme: dark;
-  overflow-x: hidden;
-  width: 100vw;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+html, body {
   background-color: #000; 
-  /* INDUSTRY STANDARD METHOD: Apply bg directly to html/body */
+  /* DOUBLE-SEAL: Applying fixed bg to both layers for total stillness */
   background-image: url('/assets/slate_bg.jpg');
-  background-size: cover; /* Forces the image to perfectly cover the glass */
-  background-position: center bottom; /* Anchored to bottom for floor realism */
-  background-attachment: fixed;
+  background-size: cover; 
+  background-position: center center !important; /* Locked to center of glass */
+  background-attachment: fixed !important;
   background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100vw;
 }
 
 body {
-  background: transparent !important;
   touch-action: manipulation;
   color: var(--text-primary);
   /* ... rest of body ... */
