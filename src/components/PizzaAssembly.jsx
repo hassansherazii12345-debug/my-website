@@ -112,14 +112,14 @@ const PizzaAssembly = () => {
                 ease: 'power2.inOut' 
             }, 11.8) // Delayed start slightly relative to scooter (11.6 to 11.8)
             .to('.tire-mark-pattern', { 
-                backgroundPositionY: '-180px', 
+                backgroundPositionY: '180px', 
                 duration: 1.8, 
                 ease: 'power2.inOut' 
             }, 11.8);
  
             // 12. CONTINUOUS ROLLING EFFECT
             mainTl.to('.tire-mark-pattern', { 
-                backgroundPositionY: '-450px', 
+                backgroundPositionY: '800px', 
                 duration: 2.5, 
                 ease: 'none' 
             }, 13.6); 
