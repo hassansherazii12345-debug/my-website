@@ -57,26 +57,27 @@ body {
 
 #bg-layer {
   position: fixed;
-  top: -25vh !important;
-  left: -25vw !important;
-  width: 150vw !important;
-  height: 150vh !important;
+  top: -250px !important;
+  bottom: -250px !important;
+  left: -250px !important;
+  right: -250px !important;
+  width: auto !important;
+  height: auto !important;
   z-index: -1;
   background-image: url('/assets/slate_bg.jpg');
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat;
   pointer-events: none;
-  /* Removed transform/backface-visibility so iOS does not aggressively clip the bounds */
 }
 
 /* Specific mobile override for background sizing and safe-area fix */
 @media (max-width: 768px) {
   #bg-layer {
-    top: -25vh !important;
-    left: -25vw !important;
-    width: 150vw !important;
-    height: 150vh !important;
+    top: -250px !important;
+    bottom: -250px !important;
+    left: -250px !important;
+    right: -250px !important;
   }
 }
 
