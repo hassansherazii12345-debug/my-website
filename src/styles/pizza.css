@@ -114,6 +114,7 @@
 .assembly-delivery {
     top: 68% !important; 
     bottom: auto !important;
+    pointer-events: auto !important; /* Enable links and buttons inside this section */
 }
 
 .assembly-text p {
