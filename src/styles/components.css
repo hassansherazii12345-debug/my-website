@@ -267,18 +267,33 @@
         left: 0%;
     }
 
+    .hero-title-line {
+    /* Fluid Heading Typography - Refined for Android/Small Screen Safety */
+    font-size: clamp(1.8rem, 8vw, 5rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    white-space: normal;
+    max-width: 98vw;
+    word-wrap: break-word;
+}
+
     .hero-buttons {
-        display: flex;
-        gap: 1rem;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Force side-by-side on Android */
+        gap: 0.6rem; /* Tightened for mobile fit */
         width: 100%;
         justify-content: center;
-        flex-direction: row; /* Ensure side-by-side as per reference */
+        padding: 0 5%;
     }
 
     .btn-red {
         width: auto;
-        min-width: 140px;
-        padding: 1.5vh 3vw;
+        min-width: 135px; /* Downsized slightly for Android safety */
+        padding: 1.2vh 3vw;
+        font-size: 0.85rem; /* Matched to the smaller container */
     }
 }
 
