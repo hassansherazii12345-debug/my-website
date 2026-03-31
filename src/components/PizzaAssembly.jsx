@@ -31,7 +31,7 @@ const PizzaAssembly = () => {
 
             // Set all initial states at the very first frame
             mainTl.set(sectionRef.current, { visibility: 'visible', opacity: 1 }, 0)
-                .set('.pizza-box-scene', { xPercent: -50, yPercent: -50, opacity: 0 }, 0)
+                .set('.pizza-box-scene', { xPercent: -50, yPercent: -50, opacity: 1 }, 0)
                 .set('.pizza-wrapper', { xPercent: 0, yPercent: 0, opacity: 1 }, 0)
                 .set('.slice', { opacity: 0, x: 0, y: 0, force3D: true }, 0)
                 .set(['.assembly-initial', '.assembly-final'], { opacity: 0, y: 30 }, 0)
