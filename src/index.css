@@ -56,24 +56,23 @@ body {
 }
 
 /* ==========================================================================
-   MANUAL BACKGROUND CONTROLS (Adjust these numbers to fix the gap!)
+   FORCE 100% BACKGROUND COVERAGE (Safeguard against iPhone Safar gaps)
    ========================================================================== */
 #bg-layer {
   position: fixed;
-  /* Increase these negative numbers (e.g., -500px) to bleed further past gaps */
-  top: -300px !important;
-  bottom: -300px !important;
-  left: -300px !important;
-  right: -300px !important;
+  /* MASSIVE OVER-BLEED: 200% size centered to kill every possible gap */
+  width: 200vw !important;
+  height: 200vh !important;
+  top: -50vh !important;
+  left: -50vw !important;
   
-  width: auto !important;
-  height: auto !important;
-  z-index: -1;
+  z-index: -10; /* Put behind everything */
   background-image: url('/assets/slate_bg.jpg');
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat;
   pointer-events: none;
+  background-attachment: fixed;
 }
 
 h1,
