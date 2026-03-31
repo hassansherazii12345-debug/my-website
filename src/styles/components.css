@@ -166,10 +166,12 @@
 .hero-title-line {
     /* Fluid Heading Typography */
     font-size: clamp(2rem, 8vw, 5rem);
-    line-height: 4.1;
+    line-height:  1.1; /* Fixed from 4.1 to prevent jumping/wrapping issues */
     text-transform: uppercase;
     font-weight: 900;
-    margin-bottom: -3rem;
+    margin-bottom: 2rem;
+    white-space: normal;
+    max-width: 95vw;
 }
 
 .hero-subtitle {

@@ -10,8 +10,9 @@
     justify-content: center;
     overflow: visible;
     perspective: 1500px;
-    visibility: hidden; /* Prevent FOUC, GSAP will show it */
-    touch-action: pan-y; /* Prevent pinch-zoom/horizontal drag from disrupting pinned scrolling */
+    visibility: hidden; /* FOUC Prevention: Only show when GSAP is ready */
+    opacity: 0; /* Extra safety for FOUC */
+    touch-action: pan-y;
 }
 
 /* --- Right Sideline Transparent Vegetables --- */
@@ -175,13 +176,14 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    /* Removed CSS translate: GSAP will handle precise centering now */
     width: 45vw;
     max-width: 300px;
     aspect-ratio: 1;
     pointer-events: none;
     transform-style: preserve-3d;
     will-change: transform, opacity;
+    opacity: 0;
 }
 
 .pizza-box-base-scene { z-index: 5; }

@@ -13,15 +13,15 @@ const PizzaAssembly = () => {
     // Use useLayoutEffect for GSAP to ensure it runs before the browser paints
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.set(sectionRef.current, { visibility: 'visible' });
-
+            // Force an immediate refresh to lock in container heights
+            ScrollTrigger.refresh();
 
             const mainTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=800%', // Ample runway for the full story
-                    scrub: 1, // Reduced lag from 1.8 to tighter 1 for sharper frame syncing
+                    end: '+=800%', 
+                    scrub: 1, 
                     pin: true,
                     pinSpacing: true,
                     invalidateOnRefresh: true,
@@ -30,15 +30,15 @@ const PizzaAssembly = () => {
             });
 
             // Set all initial states at the very first frame
-            mainTl.set('.slice', { opacity: 0, x: 0, y: 0, force3D: true }, 0)
+            mainTl.set(sectionRef.current, { visibility: 'visible', opacity: 1 }, 0)
+                .set('.pizza-box-scene', { xPercent: -50, yPercent: -50, opacity: 0 }, 0)
+                .set('.pizza-wrapper', { xPercent: 0, yPercent: 0, opacity: 1 }, 0)
+                .set('.slice', { opacity: 0, x: 0, y: 0, force3D: true }, 0)
                 .set(['.assembly-initial', '.assembly-final'], { opacity: 0, y: 30 }, 0)
                 .set(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { scale: 1, opacity: 0, force3D: true }, 0)
                 .set('.scooter-scene', { opacity: 1, y: '-100vh', xPercent: -50, yPercent: -50 }, 0)
                 .set('.tire-marks-container', { opacity: 0, clipPath: 'inset(0 0 100% 0)' }, 0)
                 .set('.bg-text-perfection', { x: '100vw', xPercent: 0, yPercent: -50, opacity: 1, force3D: true }, 0)
-
-
-
                 .set('.box-lid-3d', { rotationX: -90, transformOrigin: '50% 0% 0px' }, 0)
                 .set('.pizza-wrapper', { transformStyle: 'preserve-3d', force3D: true, scale: 1, y: 0 }, 0)
                 .set('.pizza-container', { rotationX: 10, rotationY: -10, rotationZ: 0, force3D: true }, 0);
