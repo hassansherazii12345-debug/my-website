@@ -182,8 +182,7 @@ section {
     aspect-ratio: 1;
     pointer-events: none;
     transform-style: preserve-3d;
-    will-change: transform, opacity;
-    opacity: 0;
+    will-change: transform;
 }
 
 .pizza-box-base-scene { z-index: 5; }

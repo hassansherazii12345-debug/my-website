@@ -31,7 +31,7 @@ const PizzaAssembly = () => {
 
             // Set all initial states at the very first frame
             mainTl.set(sectionRef.current, { visibility: 'visible', opacity: 1 }, 0)
-                .set('.pizza-box-scene', { xPercent: -50, yPercent: -50, opacity: 1 }, 0)
+                .set('.pizza-box-scene', { xPercent: -50, yPercent: -50 }, 0)
                 .set('.pizza-wrapper', { xPercent: 0, yPercent: 0, opacity: 1 }, 0)
                 .set('.slice', { opacity: 0, x: 0, y: 0, force3D: true }, 0)
                 .set(['.assembly-initial', '.assembly-final'], { opacity: 0, y: 30 }, 0)
@@ -104,7 +104,7 @@ const PizzaAssembly = () => {
                 }, 11.6);
 
             // 11. BOX FADES INTO SCOOTER & TIRE MARKS STOP AT CENTER
-            mainTl.to('.pizza-box-scene', { opacity: 0, duration: 0.2 }, 12.9)
+            mainTl.to(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { opacity: 0, duration: 0.2 }, 12.9)
                 .to('.tire-marks-container', { opacity: 1, duration: 0.1 }, 10.9)
                 // Match Arrival: Tracks appear ONLY when the scooter actually hits the top of the screen (~11.6)
                 .to('.tire-marks-container', { clipPath: 'inset(0 0 51.3% 0)', duration: 1.15, ease: 'power2.out' }, 11.75)
