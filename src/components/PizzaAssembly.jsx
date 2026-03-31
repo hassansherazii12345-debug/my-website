@@ -207,7 +207,9 @@ const PizzaAssembly = () => {
             {/* Delivery Success Text - Mirrors 'Sealed Fresh' behaviors */}
             <div className="assembly-text assembly-delivery">
                 <h2 className="heading-md">DELIVERED AT SPEED</h2>
-                <p>FASTEST PIZZA ON ROUTE 38</p>
+                <div style={{ marginTop: '2.5rem' }}>
+                    <button className="btn-red">ORDER NOW</button>
+                </div>
             </div>
         </section>
     );

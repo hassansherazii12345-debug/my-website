@@ -100,7 +100,7 @@
 }
 .assembly-text {
     position: absolute;
-    bottom: 8%;
+    bottom: 12%; /* Slightly higher than before for all text */
     left: 0;
     width: 100%;
     text-align: center;
@@ -109,6 +109,11 @@
     pointer-events: none;
     will-change: transform, opacity;
     transform: translateZ(0); /* Force own GPU layer */
+}
+
+.assembly-delivery {
+    top: 68% !important; 
+    bottom: auto !important;
 }
 
 .assembly-text p {
