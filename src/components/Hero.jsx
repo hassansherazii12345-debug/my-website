@@ -103,7 +103,9 @@ const Hero = () => {
                         <h1 className="hero-title-line heading-lg text-white font-bold text-shadow-strong">GREG'S PIZZA ROUTE 38</h1>
                     </div>
                     <div className="hero-buttons hero-title-wrapper mt-4">
-                        <button className="btn-red">START ORDER</button>
+                        <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                            START ORDER
+                        </a>
                     </div>
                 </div>
             </div>

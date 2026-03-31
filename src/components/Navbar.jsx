@@ -33,9 +33,9 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-right" style={{ display: 'flex', justifyContent: 'flex-end', width: '25%' }}>
-                    <button className="cart-btn" aria-label="Menu" style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '0' }}>
+                    <a href="https://www.gregspizzaroute38ma.com/#menu" className="cart-btn" aria-label="Menu" style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center' }}>
                         <MenuIcon size={24} color="#ffffff" />
-                    </button>
+                    </a>
                 </div>
             </div>
         </nav>

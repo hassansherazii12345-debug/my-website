@@ -208,7 +208,9 @@ const PizzaAssembly = () => {
             <div className="assembly-text assembly-delivery">
                 <h2 className="heading-md">DELIVERED AT SPEED</h2>
                 <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center' }}>
-                    <button className="btn-red">ORDER NOW</button>
+                    <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                        ORDER NOW
+                    </a>
                 </div>
             </div>
         </section>
