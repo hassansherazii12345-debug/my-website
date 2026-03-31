@@ -102,20 +102,20 @@ const PizzaAssembly = () => {
                     lazy: true 
                 }, 11.6);
 
-            // 11. TIRE MARKS - PHYSICAL TRAILING EFFECT
-            // Set initial state: completely hidden off the top
+            // 11. TIRE MARKS - PHYSICAL TRAILING EFFECT (DELAYED TO STAY BEHIND WHEELS)
+            // Initial state: perfectly hidden off top edge
             mainTl.set('.tire-marks-container', { opacity: 1, clipPath: 'inset(0 0 100% 0)' }, 11.6);
             
             mainTl.to('.tire-marks-container', { 
-                clipPath: 'inset(0 0 51% 0)', // Reach exactly where the scooter stops
-                duration: 2.0, 
-                ease: 'power2.out' 
-            }, 11.6)
+                clipPath: 'inset(0 0 38% 0)', // Reveal only the top 62% of the screen (behind wheels)
+                duration: 1.8,  // Slightly slower than arrival to stay behind the front tire
+                ease: 'power2.inOut' 
+            }, 11.8) // Delayed start slightly relative to scooter (11.6 to 11.8)
             .to('.tire-mark-pattern', { 
                 backgroundPositionY: '-180px', 
-                duration: 2.0, 
-                ease: 'power2.out' 
-            }, 11.6);
+                duration: 1.8, 
+                ease: 'power2.inOut' 
+            }, 11.8);
  
             // 12. CONTINUOUS ROLLING EFFECT
             mainTl.to('.tire-mark-pattern', { 

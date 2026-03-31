@@ -333,10 +333,10 @@ section {
  
 .tire-mark-main {
     position: absolute;
-    top: -100vh;
+    top: 0;
     left: 44.8%;
     transform: translateX(-50%);
-    height: 300vh;
+    height: 100%;
     width: 25px; 
     background: transparent; 
     display: flex;
@@ -353,7 +353,7 @@ section {
     background-position: center;
     filter: invert(1) brightness(0.7) contrast(2) opacity(0.5); 
     mix-blend-mode: screen; 
-    transform: rotate(180deg) translateZ(0); 
+    transform: rotate(180deg); 
     will-change: background-position;
     backface-visibility: hidden;
 }
