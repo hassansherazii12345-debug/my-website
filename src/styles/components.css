@@ -203,13 +203,14 @@
     color: #fff;
     /* Fluid Button Padding & Width */
     padding: 1vh 2vw;
-    width: auto;
     min-width: 160px;
     max-width: 90%;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Slightly larger for better readability */
+    font-weight: 900; /* Max bold for highest contrast */
     border-radius: 8px;
     text-transform: uppercase;
+    letter-spacing: 1.5px; /* Clean, simple breathing room */
+    white-space: nowrap;
     transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 15px rgba(219, 59, 49, 0.4);
     border: 2px solid transparent;
