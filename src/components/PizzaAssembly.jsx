@@ -126,9 +126,9 @@ const PizzaAssembly = () => {
             .to('.assembly-delivery', { 
                 opacity: 1, 
                 y: 0, 
-                duration: 0.8, 
+                duration: 0.5, 
                 lazy: true 
-            }, 13.6); 
+            }, 13.8); 
 
             // 13. FINAL BOX FADE
             mainTl.to(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { opacity: 0, duration: 0.2 }, 12.9);
@@ -207,7 +207,7 @@ const PizzaAssembly = () => {
             {/* Delivery Success Text - Mirrors 'Sealed Fresh' behaviors */}
             <div className="assembly-text assembly-delivery">
                 <h2 className="heading-md">DELIVERED AT SPEED</h2>
-                <div style={{ marginTop: '2.5rem' }}>
+                <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center' }}>
                     <button className="btn-red">ORDER NOW</button>
                 </div>
             </div>
