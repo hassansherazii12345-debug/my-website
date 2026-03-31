@@ -182,11 +182,10 @@ section {
     aspect-ratio: 1;
     pointer-events: none;
     transform-style: preserve-3d;
-    will-change: transform;
 }
 
 .pizza-box-base-scene { z-index: 5; }
-.pizza-box-lid-scene { z-index: 5; } /* Updated from 50 to 5 to sit behind pizza initially */
+.pizza-box-lid-scene { z-index: 50; } /* Set permanently above the pizza to prevent Safari 3D repaint crash */
 
 .box-base-3d, .box-lid-3d {
     position: absolute;
@@ -194,7 +193,6 @@ section {
     width: 100%;
     height: 100%; 
     transform-style: preserve-3d;
-    will-change: transform;
     /* Opacity is handled solely on child planes by GSAP to preserve 3D context */
 }
 

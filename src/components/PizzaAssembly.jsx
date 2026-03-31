@@ -83,8 +83,7 @@ const PizzaAssembly = () => {
             mainTl.to('.pizza-wrapper', { z: -13, y: '1%', duration: 0.6, ease: 'bounce.out', lazy: true }, 7.7);
 
             // 8. LID COMPLETION
-            mainTl.set('.pizza-box-lid-scene', { zIndex: 50 }, 8.3)
-                .to('.box-lid-3d', { rotationX: 0, duration: 1.2, ease: 'bounce.out', lazy: true }, 8.3)
+            mainTl.to('.box-lid-3d', { rotationX: 0, duration: 1.2, ease: 'bounce.out', lazy: true }, 8.3)
                 .to('.pizza-wrapper', { opacity: 0, duration: 0.01, lazy: true }, 9.6)
                 .to('.pizza-box-scene', { scale: 1.08, duration: 0.6, lazy: true }, 9.6);
 
