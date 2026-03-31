@@ -34,7 +34,7 @@ const PizzaAssembly = () => {
                 .set('.pizza-box-scene', { xPercent: -50, yPercent: -50 }, 0)
                 .set('.pizza-wrapper', { xPercent: 0, yPercent: 0, opacity: 1 }, 0)
                 .set('.slice', { opacity: 0, x: 0, y: 0, force3D: true }, 0)
-                .set(['.assembly-initial', '.assembly-final'], { opacity: 0, y: 30 }, 0)
+                .set(['.assembly-initial', '.assembly-final', '.assembly-delivery'], { opacity: 0, y: 30 }, 0)
                 .set(['.base-floor', '.lid-top-face', '.lid-bottom-face', '.lid-flap'], { scale: 1, opacity: 0, force3D: true }, 0)
                 .set('.scooter-scene', { opacity: 1, y: '-100vh', xPercent: -50, yPercent: -50 }, 0)
                 .set('.tire-marks-container', { opacity: 0, clipPath: 'inset(0 0 100% 0)' }, 0)
@@ -122,6 +122,12 @@ const PizzaAssembly = () => {
                 backgroundPositionY: '800px', 
                 duration: 2.5, 
                 ease: 'none' 
+            }, 13.6)
+            .to('.assembly-delivery', { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                lazy: true 
             }, 13.6); 
 
             // 13. FINAL BOX FADE
@@ -197,6 +203,11 @@ const PizzaAssembly = () => {
             <div className="assembly-text assembly-final">
                 <h2 className="heading-md">SEALED FRESH</h2>
                 <p>READY TO IMPRESS</p>
+            </div>
+            {/* Delivery Success Text - Mirrors 'Sealed Fresh' behaviors */}
+            <div className="assembly-text assembly-delivery">
+                <h2 className="heading-md">DELIVERED AT SPEED</h2>
+                <p>FASTEST PIZZA ON ROUTE 38</p>
             </div>
         </section>
     );
