@@ -57,25 +57,19 @@ body {
 
 #bg-layer {
   position: fixed;
-  top: 0;
+  top: -10svh !important; /* Bleed off top to hide rubber-banding gaps */
   left: 0;
   width: 100vw !important;
-  height: 100vh !important;
+  height: 120svh !important; /* Static Viewport Height - NEVER resizes */
   min-width: 100% !important;
-  min-height: 100% !important; /* Slightly more to prevent gaps */
   z-index: -1;
   background-image: url('/assets/slate_bg.jpg');
   background-size: cover !important;
-  /* Forces image to stretch to fill entire horizontal space */
   background-position: center top !important;
-  /* Pizza stays centered as window shrinks */
   background-repeat: no-repeat;
-  background-attachment: scroll;
   backface-visibility: hidden;
   transform: translateZ(0);
-  /* Hardware acceleration */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  pointer-events: none;
 }
 
 /* Specific mobile override for background sizing and svh fix */
@@ -83,10 +77,8 @@ body {
   #bg-layer {
     background-size: cover !important;
     background-position: center top !important;
-    /* Use DVH (dynamic vh) to better handle moving address bars on iOS */
-    height: 113dvh !important;
-    min-height: 110dvh !important;
-    top: 0 !important;
+    height: 120svh !important; /* Locked height prevents zooming */
+    top: -10svh !important; 
   }
 }
 
