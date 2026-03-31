@@ -106,7 +106,7 @@ const Hero = () => {
                         <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none' }}>
                             START ORDER
                         </a>
-                        <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-gold-outline" style={{ textDecoration: 'none' }}>
+                        <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none' }}>
                             VIEW MENU
                         </a>
                     </div>
