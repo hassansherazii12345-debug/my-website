@@ -36,7 +36,12 @@ html {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #0a0a0c; /* Matches Slate BG - prevents black flicker gaps */
+  background-color: #0a0a0c; 
+  /* Safari GSAP Fix: Texture the infinite root layer directly */
+  background-image: url('/assets/slate_bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 body {
@@ -57,14 +62,16 @@ body {
 
 #bg-layer {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 140lvh !important; /* Large Viewport Height - crawls beneath the bottom bar */
+  top: -15vh; /* Massive explicit bleed to cover iOS bounce */
+  bottom: -15vh;
+  left: -15vw;
+  right: -15vw;
+  width: auto !important;
+  height: auto !important; 
   z-index: -1;
   background-image: url('/assets/slate_bg.jpg');
   background-size: cover !important;
-  background-position: center bottom !important; /* Anchor to bottom for clean safe-area coverage */
+  background-position: center bottom !important;
   background-repeat: no-repeat;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -74,9 +81,8 @@ body {
 /* Specific mobile override for background sizing and safe-area fix */
 @media (max-width: 768px) {
   #bg-layer {
-    height: 140lvh !important; 
-    width: 100% !important;
-    background-position: center bottom !important;
+    top: -15vh !important;
+    bottom: -15vh !important;
   }
 }
 

@@ -1,6 +1,6 @@
 .assembly-section {
     height: 100vh;
-    height: 100.5vh; /* Locks taller than viewport to hide address bar gaps */
+    height: 100lvh; /* Large Viewport Height prevents Safari pin-gap */
     width: 100vw;
     width: 100dvw;
     position: relative;
