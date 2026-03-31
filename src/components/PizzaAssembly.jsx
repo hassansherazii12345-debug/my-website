@@ -102,23 +102,24 @@ const PizzaAssembly = () => {
                     lazy: true 
                 }, 11.6);
 
-            // 11. TIRE MARKS - PHYSICALLY LOCKED TO SCOOTER ARRIVAL
-            mainTl.to('.tire-marks-container', { opacity: 1, duration: 0.01 }, 11.6)
-                .to('.tire-marks-container', { 
-                    clipPath: 'inset(0 0 50% 0)', // Stop reveal at the exact horizontal center of the scooter
-                    duration: 2.0, 
-                    ease: 'power2.out' 
-                }, 11.6)
-                .to('.tire-mark-pattern', { 
-                    backgroundPositionY: '-120px', 
-                    duration: 2.0, 
-                    ease: 'power2.out' 
-                }, 11.6);
+            // 11. TIRE MARKS - PHYSICAL TRAILING EFFECT
+            // Set initial state: completely hidden off the top
+            mainTl.set('.tire-marks-container', { opacity: 1, clipPath: 'inset(0 0 100% 0)' }, 11.6);
+            
+            mainTl.to('.tire-marks-container', { 
+                clipPath: 'inset(0 0 51% 0)', // Reach exactly where the scooter stops
+                duration: 2.0, 
+                ease: 'power2.out' 
+            }, 11.6)
+            .to('.tire-mark-pattern', { 
+                backgroundPositionY: '-180px', 
+                duration: 2.0, 
+                ease: 'power2.out' 
+            }, 11.6);
  
-            // 12. CONTINUOUS ROLLING EFFECT WHILE PINNED
-            // After the scooter arrives, the tracks keep 'moving' beneath it
+            // 12. CONTINUOUS ROLLING EFFECT
             mainTl.to('.tire-mark-pattern', { 
-                backgroundPositionY: '-400px', 
+                backgroundPositionY: '-450px', 
                 duration: 2.5, 
                 ease: 'none' 
             }, 13.6); 
