@@ -36,7 +36,7 @@ html {
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #000000; /* Solid black overscroll handling */
+  background-color: #0a0a0c; /* Matches Slate BG - prevents black flicker gaps */
 }
 
 body {
