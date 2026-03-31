@@ -1,0 +1,376 @@
+.assembly-section {
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    width: 100dvw;
+    position: relative;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    perspective: 1500px;
+    visibility: hidden; /* Prevent FOUC, GSAP will show it */
+    touch-action: pan-y; /* Prevent pinch-zoom/horizontal drag from disrupting pinned scrolling */
+}
+
+/* --- Right Sideline Transparent Vegetables --- */
+.pizza-wrapper {
+    position: relative;
+    width: 80vw;
+    max-width: 500px;
+    aspect-ratio: 1;
+    z-index: 10;
+    border-radius: 50%;
+    /* Optimized Drop Shadow: Reduced spread and blur slightly for performance, added will-change */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    overflow: visible;
+    contain: layout style;
+}
+
+.pizza-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    overflow: visible;
+    will-change: transform;
+    transform: translateZ(0); 
+    backface-visibility: hidden;
+}
+
+/* --- ANTI-FOUC: Global Hide ---
+   This ensures the browser natively paints these elements as completely invisible BEFORE React or GSAP even boot up. GSAP will flip their opacities to 1 the microsecond their positions are safely calculated off-screen.
+*/
+.base-floor, .lid-top-face, .lid-bottom-face, .lid-flap, .scooter-scene, .tire-marks-container, .assembly-initial, .assembly-final {
+    opacity: 0;
+}
+
+.slice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/pizza.png');
+    background-size: 118%;
+    background-position: center;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+/* Perfect 8 wedges from the 100x100 full circle */
+.slice-1 {
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%);
+}
+
+.slice-2 {
+    clip-path: polygon(50% 50%, 100% 0%, 100% 50%);
+}
+
+.slice-3 {
+    clip-path: polygon(50% 50%, 100% 50%, 100% 100%);
+}
+
+.slice-4 {
+    clip-path: polygon(50% 50%, 100% 100%, 50% 100%);
+}
+
+.slice-5 {
+    clip-path: polygon(50% 50%, 50% 100%, 0% 100%);
+}
+
+.slice-6 {
+    clip-path: polygon(50% 50%, 0% 100%, 0% 50%);
+}
+
+.slice-7 {
+    clip-path: polygon(50% 50%, 0% 50%, 0% 0%);
+}
+
+.slice-8 {
+    clip-path: polygon(50% 50%, 0% 0%, 50% 0%);
+}
+.assembly-text {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+    overflow: visible;
+    pointer-events: none;
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force own GPU layer */
+}
+
+.assembly-text p {
+    color: var(--accent-red);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+/* --- Background Moving Text --- */
+.bg-text-perfection {
+    position: absolute;
+    top: 50%;
+    left: 0; /* CSS default, GSAP handles actual position via x transform */
+    white-space: nowrap;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 200px; /* Fixed massive size - will never shrink/grow */
+    font-weight: 1000;
+    color: #ffffff;
+    z-index: 2; /* Sit behind the pizza (z-index: 10) */
+    pointer-events: none;
+    letter-spacing: -6px;
+    will-change: transform;
+    transform: translateZ(0); /* Force own GPU layer */
+}
+
+
+/* --- Performance Optimized Animations --- */
+@keyframes float-drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(15px, -10px) rotate(4deg); }
+    66% { transform: translate(-10px, 15px) rotate(-3deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.float-animate {
+    animation: float-drift ease-in-out infinite;
+    will-change: transform;
+}
+
+.rotate-bg-slow {
+    animation: rotate-slow 60s linear infinite;
+    will-change: transform;
+}
+
+/* Optimization for off-screen chunks - DISABLED content-visibility for animated sections 
+   to prevent GSAP ScrollTrigger position miscalculations on first load. */
+section {
+    content-visibility: visible;
+}
+
+#home, .assembly-section {
+    content-visibility: visible;
+}
+
+
+/* --- Pizza Box Animation Elements --- */
+.pizza-box-scene {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45vw;
+    max-width: 300px;
+    aspect-ratio: 1;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+.pizza-box-base-scene { z-index: 5; }
+.pizza-box-lid-scene { z-index: 5; } /* Updated from 50 to 5 to sit behind pizza initially */
+
+.box-base-3d, .box-lid-3d {
+    position: absolute;
+    top: 0; left: 0; /* Explicitly lock top/left to avoid drift */
+    width: 100%;
+    height: 100%; 
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* Opacity is handled solely on child planes by GSAP to preserve 3D context */
+}
+
+/* --- Pizza Box Base: Simplified flat 2D square --- */
+.base-floor {
+    position: absolute; width: 100%; height: 100%;
+    background-image: url('../assets/checkered-sheet.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fffdf5;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4), 0 20px 50px rgba(0,0,0,0.7);
+    border-radius: 6px;
+    border: 3px solid #d33227;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* --- Lid Geometry --- */
+.box-lid-3d {
+    top: 0px; 
+    left: 0;
+    transform-origin: 50% 0% 0px;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.lid-top-face {
+    position: absolute; width: 100%; height: 100%;
+    background-image: url('../assets/pizza-box-top-cropped.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    transform: translateZ(0px);
+    border-radius: 4px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    will-change: transform, opacity;
+}
+.lid-bottom-face {
+    position: absolute; width: 100%; height: 100%;
+    background: #fffdf5; 
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+    transform: translateZ(-0.5px) rotateY(180deg);
+    backface-visibility: hidden;
+    border-radius: 4px;
+    will-change: transform, opacity;
+}
+.lid-flap {
+    position: absolute;
+    background: #c3261d;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+.lid-flap-front {
+    bottom: 0; left: 0; width: 100%; height: 28px;
+    transform-origin: top;
+    transform: translateZ(1px) translateY(100%) rotateX(-90deg);
+    display: flex; justify-content: center; align-items: flex-start;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+.lid-thumb-cutout {
+    width: 32px; height: 16px; background: #111;
+    border-radius: 0 0 16px 16px; position: absolute; top: 0;
+}
+.lid-flap-text {
+    color: #fff; font-family: 'Arial Black', sans-serif;
+    font-size: 1rem; letter-spacing: 4px; opacity: 0.9;
+    margin-top: auto; margin-bottom: 2px;
+}
+.lid-flap-left {
+    top: 0; left: 0; width: 28px; height: 100%;
+    transform-origin: right;
+    transform: translateZ(1px) translateX(-100%) rotateY(90deg);
+    backface-visibility: hidden;
+}
+.lid-flap-right {
+    top: 0; right: 0; width: 28px; height: 100%;
+    transform-origin: left;
+    transform: translateZ(1px) translateX(100%) rotateY(-90deg);
+    display: flex; justify-content: center; align-items: center;
+    backface-visibility: hidden;
+}
+.lid-flap-right .lid-flap-text {
+    transform: rotate(90deg);
+    margin: 0;
+}
+
+/* --- Scooter Delivery Scene --- */
+.scooter-scene {
+    position: absolute;
+    top: 50%;
+    left: 51.3%;
+    width: 280px; 
+    aspect-ratio: 1; 
+    z-index: 4; 
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .scooter-scene {
+        width: 255px; 
+        left: 52.9%;
+    }
+}
+ 
+/* --- Tire Marks Effect --- */
+.tire-marks-container {
+    position: absolute;
+    top: 0;
+    left: 51.3%; 
+    transform: translateX(-50%) translateZ(0);
+    width: 280px; 
+    height: 100vh;
+    z-index: 2; 
+    pointer-events: none;
+    overflow: visible;
+    will-change: clip-path;
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .tire-marks-container {
+        left: 52.9%; 
+        width: 255px;
+    }
+}
+ 
+.tire-mark-main {
+    position: absolute;
+    top: -100vh;
+    left: 44.8%;
+    transform: translateX(-50%);
+    height: 300vh;
+    width: 25px; 
+    background: transparent; 
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tire-mark-pattern {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/tire-pattern-track.png');
+    background-repeat: repeat-y;
+    background-size: 110% 45px; 
+    background-position: center;
+    filter: invert(1) brightness(0.7) contrast(2) opacity(0.5); 
+    mix-blend-mode: screen; 
+    transform: rotate(180deg) translateZ(0); 
+    will-change: background-position;
+    backface-visibility: hidden;
+}
+ 
+.scooter-rotator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg);
+}
+
+.scooter-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-orientation: none;
+}

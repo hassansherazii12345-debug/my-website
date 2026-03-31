@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap');
+@import './styles/components.css';
+
+:root {
+  --bg-light: #0a0a0c;
+  --bg-dark: #0a0a0c;
+  /* Repurposed to light for existing references */
+  --bg-card: #141417;
+  --text-primary: #fdfdfd;
+  --text-secondary: #9a9a9a;
+  --text-inverse: #ffffff;
+  --brand-red: #db3b31;
+  --accent-gold: #e2b34a;
+  /* Keeping gold for some small accents if needed, or change to red */
+  --accent-red: #db3b31;
+  --accent-yellow: #f5b041;
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-inverse: rgba(255, 255, 255, 0.1);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+
+  --nav-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark; /* Force Safari to use dark mode chrome/scrollbars */
+  overflow-x: hidden;
+  width: 100vw !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #000000; /* Solid black overscroll handling */
+}
+
+body {
+  background: transparent !important; /* Restore transparency for slate bg layer */
+  touch-action: manipulation; /* Allows scroll/tap but blocks double-tap zoom */
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+  width: 100vw !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+#bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  min-width: 100% !important;
+  min-height: 100% !important; /* Slightly more to prevent gaps */
+  z-index: -1;
+  background-image: url('/assets/slate_bg.jpg');
+  background-size: cover !important;
+  /* Forces image to stretch to fill entire horizontal space */
+  background-position: center top !important;
+  /* Pizza stays centered as window shrinks */
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  /* Hardware acceleration */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Specific mobile override for background sizing and svh fix */
+@media (max-width: 768px) {
+  #bg-layer {
+    background-size: cover !important;
+    background-position: center top !important;
+    /* Use DVH (dynamic vh) to better handle moving address bars on iOS */
+    height: 113dvh !important;
+    min-height: 110dvh !important;
+    top: 0 !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.text-gold {
+  color: var(--accent-gold);
+}
+
+.text-red {
+  color: var(--accent-red);
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.heading-lg {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  /* Scaled down per user request */
+  letter-spacing: -1px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.4s ease-out;
+  transform: perspective(1000px) rotateY(calc(var(--mouse-x, 0) * 8deg)) rotateX(calc(var(--mouse-y, 0) * -8deg)) translateZ(5px);
+  will-change: transform, text-shadow;
+}
+
+/* Deep 3D Extrusion Effect for text */
+.heading-3d {
+  text-shadow:
+    calc(var(--mouse-x, 0) * -2px) calc(var(--mouse-y, 0) * -2px) 0px #3a2d10,
+    calc(var(--mouse-x, 0) * -5px) calc(var(--mouse-y, 0) * -5px) 0px #2a200a,
+    calc(var(--mouse-x, 0) * -8px) calc(var(--mouse-y, 0) * -8px) 0px #1a1305,
+    calc(var(--mouse-x, 0) * -12px) calc(var(--mouse-y, 0) * -12px) 0px #0a0802,
+    calc(var(--mouse-x, 0) * -20px) calc(var(--mouse-y, 0) * -20px) 20px rgba(0, 0, 0, 0.9),
+    calc(var(--mouse-x, 0) * -30px) calc(var(--mouse-y, 0) * -30px) 40px rgba(212, 175, 55, 0.5);
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-gold.heading-3d {
+  text-shadow:
+    calc(var(--mouse-x, 0) * -2px) calc(var(--mouse-y, 0) * -2px) 0px #a98020,
+    calc(var(--mouse-x, 0) * -5px) calc(var(--mouse-y, 0) * -5px) 0px #8c6818,
+    calc(var(--mouse-x, 0) * -8px) calc(var(--mouse-y, 0) * -8px) 0px #6e5010,
+    calc(var(--mouse-x, 0) * -12px) calc(var(--mouse-y, 0) * -12px) 0px #362400,
+    calc(var(--mouse-x, 0) * -20px) calc(var(--mouse-y, 0) * -20px) 20px rgba(0, 0, 0, 0.9),
+    calc(var(--mouse-x, 0) * -30px) calc(var(--mouse-y, 0) * -30px) 40px rgba(212, 175, 55, 0.5);
+}
+
+.heading-md {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  /* Scaled down slightly */
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.4s ease-out;
+  transform: perspective(1000px) rotateY(calc(var(--mouse-x, 0) * 1deg)) rotateX(calc(var(--mouse-y, 0) * -1deg));
+  text-shadow: calc(var(--mouse-x, 0) * -2px) calc(var(--mouse-y, 0) * -2px) 10px rgba(219, 59, 49, 0.1);
+  will-change: transform, text-shadow;
+}
+
+/* Premium gradient classes - updated to red gradient */
+.bg-gradient-radial {
+  background: radial-gradient(circle at center, #1e1e24 0%, #0a0a0c 100%);
+}

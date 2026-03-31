@@ -1,0 +1,347 @@
+/* --- Navbar Styles --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Added safe area padding to hide dynamic island and avoid content cut-off */
+    padding-top: env(safe-area-inset-top, 0px);
+    height: auto;
+    min-height: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+    z-index: 1000;
+    background: rgba(219, 59, 49, 0.7);
+    /* Semi-transparent brand-red */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease, padding 0.3s ease, min-height 0.3s ease;
+}
+
+.navbar-scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    /* Deeper dark background on scroll */
+    padding-bottom: 0.5rem;
+    min-height: calc(70px + env(safe-area-inset-top, 0px));
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-family: var(--font-body);
+    /* Fluid Brand Font Size */
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #FFB800 !important;
+    /* Ensure Cheddar Yellow persistence */
+    white-space: nowrap;
+}
+
+/* Fix for SVG fill in brand mark if it were text, but it's an SVG component. 
+   We ensure the container doesn't force black overrides. */
+.nav-brand * {
+    fill: #FFB800 !important;
+}
+
+.order-ahead-badge {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+}
+
+.nav-item {
+    position: relative;
+    opacity: 0;
+    /* for gsap */
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cart-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .order-ahead-badge {
+        display: none;
+    }
+
+    .nav-order-ahead {
+        display: none;
+    }
+}
+
+
+/* --- Hero Styles --- */
+.hero-section {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Adjust for navbar height + safe area */
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+    background: transparent;
+}
+
+@media (min-width: 601px) {
+    .hero-section {
+        min-height: 600px;
+    }
+}
+
+.hero-video-container-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.hero-video-full {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-title-wrapper {
+    /* ANTI-FOUC: Matches the GSAP from-state natively in browser CSS so it doesn't jump before loading */
+    opacity: 0;
+    transform: translateY(120px);
+    will-change: transform, opacity;
+}
+
+.hero-title-line {
+    /* Fluid Heading Typography */
+    font-size: clamp(2rem, 8vw, 5rem);
+    line-height: 4.1;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: -3rem;
+}
+
+.hero-subtitle {
+    /* Fluid Subtitle Typography */
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.text-shadow-strong {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-red {
+    background-color: var(--brand-red);
+    color: #fff;
+    /* Fluid Button Padding & Width */
+    padding: 1vh 2vw;
+    width: auto;
+    min-width: 160px;
+    max-width: 90%;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 700;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(219, 59, 49, 0.4);
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-red:hover {
+    background-color: var(--accent-yellow, #f5b041);
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 176, 65, 0.4);
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        min-height: 109.25vw;
+    }
+
+    .hero-video-full {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+        position: absolute;
+        top: 14.5%;
+        left: 0%;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        justify-content: center;
+        flex-direction: row; /* Ensure side-by-side as per reference */
+    }
+
+    .btn-red {
+        width: auto;
+        min-width: 140px;
+        padding: 1.5vh 3vw;
+    }
+}
+
+/* Abstract glowing elements */
+.hero-bg-accent {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.glow-red {
+    background: var(--accent-red);
+    width: 500px;
+    height: 500px;
+    top: 10%;
+    right: -10%;
+}
+
+.glow-gold {
+    background: var(--accent-gold);
+    width: 600px;
+    height: 600px;
+    bottom: -20%;
+    left: -20%;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: clamp(0.6rem, 2vw, 0.8rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 10;
+}
+/* --- Hero Subtitle Bar --- */
+.hero-subtitle-bar {
+    background: transparent;
+    padding: 1.5rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-subtitle-bar .subtitle-text {
+    /* Fixed size: won't grow/shrink with window width */
+    font-size: 0.8rem; 
+    color: rgb(177, 161, 161); /* Changed as requested */
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+    /* Black outline + subtle shadow */
+    text-shadow: 
+        -1.5px -1.5px 0 #000,  
+         1.5px -1.5px 0 #000,
+        -1.5px  1.5px 0 #000,
+         1.5px  1.5px 0 #000,
+         0 2px 5px rgba(0,0,0,0.5);
+}
+
+.scroll-indicator-v2 {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.scroll-indicator-v2 p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.bounce-anim {
+    animation: bounce 2s infinite ease-in-out;
+    will-change: transform;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-8px);}
+    60% {transform: translateY(-4px);}
+}
