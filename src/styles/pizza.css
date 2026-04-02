@@ -23,9 +23,9 @@
     aspect-ratio: 1;
     z-index: 10;
     border-radius: 50%;
-    /* Optimized Drop Shadow: Reduced spread and blur slightly for performance, added will-change */
+    /* Balanced Drop Shadow: Restored from stable Vercel version */
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
-    will-change: transform, opacity, filter;
+    will-change: transform, opacity;
     transform: translateZ(0);
     backface-visibility: hidden;
     overflow: visible;

@@ -1,41 +1,71 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Facebook } from 'lucide-react';
 import '../styles/contact.css';
 
 const Contact = () => {
     return (
         <footer id="contact" className="contact-section">
             <div className="container contact-container">
+                <div id="about" className="about-section" style={{ marginBottom: '4rem' }}>
+                    <h2 className="heading-md" style={{ marginBottom: '2rem', color: '#000' }}>ABOUT <span className="text-red">US</span></h2>
+                    <div style={{ color: '#444', fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '800px', fontWeight: 'bold', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
+                        <p style={{ marginBottom: '1rem' }}>Support local. Eat something great.</p>
+                        <p style={{ marginBottom: '1rem' }}>At Greg's Pizza Route 38, every dish is made to keep people coming back. It’s no surprise locals love it—and you might too.</p>
+                        <p style={{ marginBottom: '1rem' }}>Start with the Power Protein Salad, one of the most talked-about items on the menu. Add a side of crispy french fries to make it a complete, satisfying meal.</p>
+                        <p style={{ marginBottom: '1rem' }}>Serving the community for years and proudly partnered with Slice since 2021, we make ordering easy with quick curbside pickup.</p>
+                        <p>Simple, fresh, and always worth it.</p>
+                    </div>
+                </div>
+
                 <div className="contact-content">
-                    <div className="contact-info">
+                    <div className="contact-info" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', fontWeight: '600' }}>
                         <h2 className="heading-md" style={{ marginBottom: '2rem' }}>VISIT <span className="text-red">US</span></h2>
                         <div className="info-item">
-                            <MapPin className="text-red" size={24} />
-                            <p>123 Luxury Avenue, Culinary District, NY 10012</p>
+                            <a 
+                                href="https://www.google.com/maps/place/101+Main+St+Wilmington,+MA+01887" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+                            >
+                                <MapPin className="text-red" size={24} />
+                            </a>
+                            <p>
+                                101 Main St Wilmington, MA 01887 
+                                <a 
+                                    href="https://www.google.com/maps/place/101+Main+St+Wilmington,+MA+01887" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ fontSize: '0.8rem', color: '#E31837', textDecoration: 'underline', marginLeft: '10px', whiteSpace: 'nowrap' }}
+                                >
+                                    GET DIRECTIONS
+                                </a>
+                            </p>
                         </div>
                         <div className="info-item">
                             <Phone className="text-red" size={24} />
-                            <p>+1 (555) 123-4567</p>
+                            <p>(978) 657-4567</p>
                         </div>
                         <div className="info-item">
-                            <Mail className="text-red" size={24} />
-                            <p>reservations@gregspizza.com</p>
+                            <a 
+                                href="https://www.facebook.com/profile.php?id=100069684032410" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+                            >
+                                <Facebook className="text-red" size={24} />
+                            </a>
+                            <p>
+                                Follow Us 
+                                <a 
+                                    href="https://www.facebook.com/profile.php?id=100069684032410" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{ fontSize: '0.8rem', color: '#E31837', textDecoration: 'underline', marginLeft: '10px', whiteSpace: 'nowrap' }}
+                                >
+                                    Facebook
+                                </a>
+                            </p>
                         </div>
-                        <div className="info-item">
-                            <Clock className="text-red" size={24} />
-                            <div>
-                                <p>Mon - Thu: 5PM - 11PM</p>
-                                <p>Fri - Sun: 4PM - 12AM</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="contact-newsletter">
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>JOIN THE EXCLUSIVE CLUB</h3>
-                        <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Receive invitations to private tastings and seasonal menu reveals.</p>
-                        <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-                            <input type="email" placeholder="YOUR EMAIL ADDRESS" />
-                            <button type="submit">SUBSCRIBE</button>
-                        </form>
                     </div>
                 </div>
                 <div className="footer-bottom">
