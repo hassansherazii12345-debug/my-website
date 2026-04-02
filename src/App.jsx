@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,6 +14,29 @@ import './index.css';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Quick Flash-Blur Transition Bridge
+  useEffect(() => {
+    window.scrollToSection = (sectionId) => {
+      setIsTransitioning(true);
+      
+      // Total duration is ultra-quick (300ms)
+      setTimeout(() => {
+        const element = document.querySelector(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
+        
+        // Clear blur almost instantly after jump
+        setTimeout(() => {
+          setIsTransitioning(false);
+          ScrollTrigger.refresh();
+        }, 100);
+      }, 150);
+    };
+  }, []);
+
   useLayoutEffect(() => {
     // Initial refresh to ensure all starting positions are correct
     ScrollTrigger.refresh();
@@ -86,7 +109,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container" style={{ position: 'relative' }}>
+    <div className={`app-container ${isTransitioning ? 'global-blur' : ''}`} style={{ position: 'relative', transition: 'filter 0.25s ease-out' }}>
       {/* Global Background Layer */}
       <div id="bg-layer"></div>
 
@@ -109,6 +132,9 @@ function App() {
 
       </main>
       <Contact />
+      
+      {/* High-speed flash overlay to mask the jump */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(30px)', opacity: isTransitioning ? 1 : 0, transition: 'opacity 0.2s ease-in-out', pointerEvents: 'none', zIndex: 3000 }}></div>
     </div>
   );
 }

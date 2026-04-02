@@ -59,53 +59,152 @@ const Navbar = () => {
                 <div className="nav-right" style={{ display: 'flex', justifyContent: 'flex-end', width: '25%' }}>
                     <button 
                         onClick={() => setIsMenuOpen(true)}
-                        className="cart-btn" 
+                        className="cart-btn hamburger-icon" 
                         aria-label="Open Menu" 
-                        style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center' }}
+                        style={{ 
+                            background: 'rgba(255, 255, 255, 0.1)', 
+                            border: '1px solid rgba(255,255,255,0.2)', 
+                            cursor: 'pointer', 
+                            padding: '8px 12px', 
+                            borderRadius: '30px',
+                            display: 'flex', 
+                            alignItems: 'center',
+                            backdropFilter: 'blur(10px)',
+                            transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(219, 59, 49, 0.8)'; e.currentTarget.style.borderColor = 'rgba(219, 59, 49, 1)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; }}
                     >
-                        <MenuIcon size={24} color="#ffffff" />
+                        <MenuIcon size={24} color="#ffffff" style={{ pointerEvents: 'none' }} />
                     </button>
                 </div>
             </div>
 
             {/* Mobile Sidebar Menu */}
-            <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`} style={{
+            <div className={`mobile-menu-wrapper ${isMenuOpen ? 'open' : ''}`} style={{
                 position: 'fixed',
                 top: 0,
                 right: 0,
-                width: '300px',
+                width: '100vw',
                 height: '100vh',
-                background: '#000',
+                pointerEvents: isMenuOpen ? 'auto' : 'none',
                 zIndex: 2000,
-                padding: '2rem',
-                transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
-                transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 display: 'flex',
-                flexDirection: 'column',
-                boxShadow: '-10px 0 30px rgba(0,0,0,0.5)'
+                justifyContent: 'flex-end',
             }}>
-                <button 
-                    onClick={() => setIsMenuOpen(false)}
-                    style={{ alignSelf: 'flex-end', marginBottom: '3rem' }}
-                >
-                    <X size={32} color="#ffffff" />
-                </button>
-
-                <div className="mobile-nav-links" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <a href="#home" onClick={scrollToTop} style={{ fontSize: '1.5rem', fontWeight: '800', textTransform: 'uppercase', color: '#fff', letterSpacing: '2px' }}>HOME</a>
-                    <a href="https://www.gregspizzaroute38ma.com/#menu" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.5rem', fontWeight: '800', textTransform: 'uppercase', color: '#fff', letterSpacing: '2px' }}>ORDER</a>
-                    <a href="https://www.gregspizzaroute38ma.com/#menu" target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.5rem', fontWeight: '800', textTransform: 'uppercase', color: '#fff', letterSpacing: '2px' }}>VIEW MENU</a>
-                    <a href="#about" onClick={scrollToAbout} style={{ fontSize: '1.5rem', fontWeight: '800', textTransform: 'uppercase', color: '#fff', letterSpacing: '2px' }}>ABOUT US</a>
-                </div>
-            </div>
-            
-            {/* Overlay */}
-            {isMenuOpen && (
+                {/* Overlay Backdrop */}
                 <div 
                     onClick={() => setIsMenuOpen(false)}
-                    style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)', zIndex: 1999 }} 
+                    style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        width: '100%', 
+                        height: '100%', 
+                        background: 'rgba(0, 0, 0, 0.75)', 
+                        backdropFilter: 'blur(15px)',
+                        opacity: isMenuOpen ? 1 : 0,
+                        transition: 'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1)' 
+                    }} 
                 />
-            )}
+
+                {/* Sidebar Drawer */}
+                <div className="mobile-menu-drawer" style={{
+                    position: 'relative',
+                    width: '100%',
+                    maxWidth: '450px',
+                    height: '100%',
+                    background: 'linear-gradient(135deg, rgba(15,15,18,0.98) 0%, rgba(5,5,8,0.98) 100%)',
+                    borderLeft: '1px solid rgba(255,255,255,0.03)',
+                    padding: '4rem 3rem',
+                    transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+                    transition: 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.2s ease',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    boxShadow: isMenuOpen ? '-30px 0 80px rgba(0,0,0,0.9)' : 'none'
+                }}>
+                    
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5rem', opacity: isMenuOpen ? 1 : 0, transition: 'opacity 1.5s ease 0.4s' }}>
+                        <MeltedCheeseTitle style={{ width: '160px', height: 'auto', transformOrigin: 'left center' }} />
+                        <button 
+                            onClick={() => setIsMenuOpen(false)}
+                            style={{ 
+                                background: 'transparent', 
+                                border: '1px solid rgba(255,255,255,0.1)', 
+                                padding: '12px', 
+                                borderRadius: '50%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                cursor: 'pointer',
+                                transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'rotate(90deg)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'rotate(0deg)'; }}
+                        >
+                            <X size={24} color="#ffffff" style={{ pointerEvents: 'none', transition: 'color 0.8s ease' }} />
+                        </button>
+                    </div>
+
+                    <div className="mobile-nav-links" style={{ display: 'flex', flexDirection: 'column', gap: '3rem', flexGrow: 1, marginTop: '2rem' }}>
+                        {[
+                            { label: 'HOME', action: scrollToTop },
+                            { label: 'ORDER AHEAD', href: "https://www.gregspizzaroute38ma.com/#menu", isTargetBlank: true },
+                            { label: 'VIEW MENU', href: "https://www.gregspizzaroute38ma.com/#menu", isTargetBlank: true },
+                            { label: 'ABOUT US', action: scrollToAbout }
+                        ].map((item, idx) => (
+                            <a 
+                                key={idx}
+                                href={item.href || '#'} 
+                                onClick={item.action ? item.action : undefined} 
+                                target={item.isTargetBlank ? '_blank' : undefined} 
+                                rel={item.isTargetBlank ? 'noopener noreferrer' : undefined}
+                                className="mobile-nav-item"
+                                style={{ 
+                                    fontSize: '2.2rem', 
+                                    fontWeight: '300', 
+                                    fontFamily: 'var(--font-heading)',
+                                    textTransform: 'uppercase', 
+                                    color: '#fff', 
+                                    letterSpacing: '4px',
+                                    textDecoration: 'none',
+                                    position: 'relative',
+                                    opacity: isMenuOpen ? 1 : 0,
+                                    transform: isMenuOpen ? 'translateY(0)' : 'translateY(40px)',
+                                    transition: `all 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${0.3 + idx * 0.15}s`,
+                                    display: 'inline-block',
+                                    width: 'fit-content'
+                                }}
+                                onMouseEnter={(e) => { 
+                                    e.currentTarget.style.color = 'var(--accent-gold)';
+                                    e.currentTarget.style.letterSpacing = '8px';
+                                }}
+                                onMouseLeave={(e) => { 
+                                    e.currentTarget.style.color = '#fff';
+                                    e.currentTarget.style.letterSpacing = '4px';
+                                }}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="mobile-menu-footer" style={{ 
+                        marginTop: 'auto', 
+                        borderTop: '1px solid rgba(255,255,255,0.05)', 
+                        paddingTop: '2.5rem', 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        gap: '12px',
+                        opacity: isMenuOpen ? 1 : 0,
+                        transform: isMenuOpen ? 'translateY(0)' : 'translateY(20px)',
+                        transition: 'all 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s'
+                    }}>
+                        <p style={{ color: 'var(--accent-gold)', fontWeight: '400', fontSize: '1rem', letterSpacing: '2px', textTransform: 'uppercase', margin: 0 }}>GREG'S PIZZA</p>
+                        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', letterSpacing: '1px', margin: 0 }}>Authentic • Fresh • Fast</p>
+                    </div>
+                </div>
+            </div>
         </nav>
     );
 };
