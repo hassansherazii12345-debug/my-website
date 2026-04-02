@@ -43,11 +43,7 @@
     white-space: nowrap;
 }
 
-/* Fix for SVG fill in brand mark if it were text, but it's an SVG component. 
-   We ensure the container doesn't force black overrides. */
-.nav-brand * {
-    fill: #FFB800 !important;
-}
+
 
 .order-ahead-badge {
     border: 2px solid #fff;

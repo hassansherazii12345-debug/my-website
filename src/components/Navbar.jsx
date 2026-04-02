@@ -53,7 +53,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-order-ahead nav-item" style={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <span className="order-ahead-badge">ORDER AHEAD</span>
+                    <a href="https://www.gregspizzaroute38ma.com/#menu" target="_blank" rel="noopener noreferrer" className="order-ahead-badge" style={{ textDecoration: 'none' }}>ORDER AHEAD</a>
                 </div>
 
                 <div className="nav-right" style={{ display: 'flex', justifyContent: 'flex-end', width: '25%' }}>

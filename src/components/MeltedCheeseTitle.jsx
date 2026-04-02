@@ -6,6 +6,9 @@ import React from 'react';
  * gold radiant crown and geometric style. Scaled up for better visibility.
  */
 const MeltedCheeseTitle = ({ className = '', style = {} }) => {
+    // Generate a unique ID to prevent SVG def collisions when multiple logos exist on screen
+    const uniqueId = React.useMemo(() => Math.random().toString(36).substring(7), []);
+
     return (
         <div
             className={`luxury-brand-logo ${className}`}
@@ -31,7 +34,7 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                 }}
             >
                 <defs>
-                    <linearGradient id="ultraGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id={`ultraGold-${uniqueId}`} x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#FFE066" />
                         <stop offset="20%" stopColor="#F8B500" />
                         <stop offset="50%" stopColor="#FFF2A8" />
@@ -39,30 +42,30 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                         <stop offset="100%" stopColor="#E68A00" />
                     </linearGradient>
                     
-                    <linearGradient id="glowRed" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id={`glowRed-${uniqueId}`} x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stopColor="#FF4B2B" />
                         <stop offset="100%" stopColor="#DB3B31" />
                     </linearGradient>
 
                     {/* Enhances the shiny metallic look */}
-                    <filter id="bloom">
+                    <filter id={`bloom-${uniqueId}`}>
                         <feGaussianBlur stdDeviation="3" result="blur" />
                         <feComposite in="SourceGraphic" in2="blur" operator="over" />
                     </filter>
                 </defs>
 
-                <g filter="url(#bloom)">
+                <g filter={`url(#bloom-${uniqueId})`}>
                     {/* Creative Radiant Crown / Crest at the Top */}
                     {/* Center Tall Diamond */}
-                    <polygon points="500,10 520,60 500,90 480,60" fill="url(#ultraGold)" />
+                    <polygon points="500,10 520,60 500,90 480,60" fill={`url(#ultraGold-${uniqueId})`} />
                     {/* Left Diamond */}
-                    <polygon points="460,30 475,65 460,85 445,65" fill="url(#glowRed)" />
+                    <polygon points="460,30 475,65 460,85 445,65" fill={`url(#glowRed-${uniqueId})`} />
                     {/* Right Diamond */}
-                    <polygon points="540,30 555,65 540,85 525,65" fill="url(#glowRed)" />
+                    <polygon points="540,30 555,65 540,85 525,65" fill={`url(#glowRed-${uniqueId})`} />
                     
                     {/* Elegant sweeping accent curves extending from the crest */}
-                    <path d="M 440 75 Q 250 80 50 40" fill="none" stroke="url(#ultraGold)" strokeWidth="4" strokeLinecap="round" />
-                    <path d="M 560 75 Q 750 80 950 40" fill="none" stroke="url(#ultraGold)" strokeWidth="4" strokeLinecap="round" />
+                    <path d="M 440 75 Q 250 80 50 40" fill="none" stroke={`url(#ultraGold-${uniqueId})`} strokeWidth="4" strokeLinecap="round" />
+                    <path d="M 560 75 Q 750 80 950 40" fill="none" stroke={`url(#ultraGold-${uniqueId})`} strokeWidth="4" strokeLinecap="round" />
 
                     {/* Massive Primary Elegance Text for maximum visibility */}
                     <text 
@@ -73,14 +76,14 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                         fontWeight="900" 
                         fontSize="180" 
                         letterSpacing="4" 
-                        fill="url(#ultraGold)"
+                        fill={`url(#ultraGold-${uniqueId})`}
                     >
                         Greg's
                     </text>
 
                     {/* Thick Geometric Dividing Ribbon */}
-                    <rect x="250" y="235" width="500" height="4" rx="2" fill="url(#glowRed)" />
-                    <circle cx="500" cy="237" r="8" fill="url(#ultraGold)" />
+                    <rect x="250" y="235" width="500" height="4" rx="2" fill={`url(#glowRed-${uniqueId})`} />
+                    <circle cx="500" cy="237" r="8" fill={`url(#ultraGold-${uniqueId})`} />
 
                     {/* Secondary Tracked Text - Bolded for readability when small */}
                     <text 
