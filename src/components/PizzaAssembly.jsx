@@ -20,7 +20,7 @@ const PizzaAssembly = () => {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: 'top top',
-                    end: '+=800%', 
+                    end: '+=350%', 
                     scrub: 1, 
                     pin: true,
                     pinSpacing: true,

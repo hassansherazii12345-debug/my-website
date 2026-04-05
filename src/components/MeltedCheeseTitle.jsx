@@ -6,8 +6,11 @@ import React from 'react';
  * gold radiant crown and geometric style. Scaled up for better visibility.
  */
 const MeltedCheeseTitle = ({ className = '', style = {} }) => {
-    // Generate a unique ID to prevent SVG def collisions when multiple logos exist on screen
-    const uniqueId = React.useMemo(() => Math.random().toString(36).substring(7), []);
+    // Hardcoded IDs are used because dynamic IDs combined with React remounts 
+    // or GSAP animations often cause Safari to lose the gradient reference 
+    // and render the text strictly as black.
+    const goldGradId = 'gregs-ultraGold-static';
+    const redGradId = 'gregs-glowRed-static';
 
     return (
         <div
@@ -19,7 +22,10 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                 alignItems: 'center',
                 maxWidth: '100%',
                 margin: '0 auto',
-                overflow: 'visible'
+                overflow: 'visible',
+                // Placed the drop-shadow safely on the div to prevent SVG hardware acceleration blackout on iOS
+                filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.6))',
+                transform: 'translateZ(0)', // Force GPU layer lock
             }}
         >
             <svg
@@ -30,11 +36,10 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                     width: '100%',
                     height: 'auto',
                     overflow: 'visible',
-                    filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.6))'
                 }}
             >
                 <defs>
-                    <linearGradient id={`ultraGold-${uniqueId}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id={goldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#FFE066" />
                         <stop offset="20%" stopColor="#F8B500" />
                         <stop offset="50%" stopColor="#FFF2A8" />
@@ -42,30 +47,24 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                         <stop offset="100%" stopColor="#E68A00" />
                     </linearGradient>
                     
-                    <linearGradient id={`glowRed-${uniqueId}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id={redGradId} x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stopColor="#FF4B2B" />
                         <stop offset="100%" stopColor="#DB3B31" />
                     </linearGradient>
-
-                    {/* Enhances the shiny metallic look */}
-                    <filter id={`bloom-${uniqueId}`}>
-                        <feGaussianBlur stdDeviation="3" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
                 </defs>
 
-                <g filter={`url(#bloom-${uniqueId})`}>
+                <g>
                     {/* Creative Radiant Crown / Crest at the Top */}
                     {/* Center Tall Diamond */}
-                    <polygon points="500,10 520,60 500,90 480,60" fill={`url(#ultraGold-${uniqueId})`} />
+                    <polygon points="500,10 520,60 500,90 480,60" fill={`url(#${goldGradId})`} />
                     {/* Left Diamond */}
-                    <polygon points="460,30 475,65 460,85 445,65" fill={`url(#glowRed-${uniqueId})`} />
+                    <polygon points="460,30 475,65 460,85 445,65" fill={`url(#${redGradId})`} />
                     {/* Right Diamond */}
-                    <polygon points="540,30 555,65 540,85 525,65" fill={`url(#glowRed-${uniqueId})`} />
+                    <polygon points="540,30 555,65 540,85 525,65" fill={`url(#${redGradId})`} />
                     
                     {/* Elegant sweeping accent curves extending from the crest */}
-                    <path d="M 440 75 Q 250 80 50 40" fill="none" stroke={`url(#ultraGold-${uniqueId})`} strokeWidth="4" strokeLinecap="round" />
-                    <path d="M 560 75 Q 750 80 950 40" fill="none" stroke={`url(#ultraGold-${uniqueId})`} strokeWidth="4" strokeLinecap="round" />
+                    <path d="M 440 75 Q 250 80 50 40" fill="none" stroke={`url(#${goldGradId})`} strokeWidth="4" strokeLinecap="round" />
+                    <path d="M 560 75 Q 750 80 950 40" fill="none" stroke={`url(#${goldGradId})`} strokeWidth="4" strokeLinecap="round" />
 
                     {/* Massive Primary Elegance Text for maximum visibility */}
                     <text 
@@ -76,14 +75,14 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                         fontWeight="900" 
                         fontSize="180" 
                         letterSpacing="4" 
-                        fill={`url(#ultraGold-${uniqueId})`}
+                        fill={`url(#${goldGradId})`}
                     >
                         Greg's
                     </text>
 
                     {/* Thick Geometric Dividing Ribbon */}
-                    <rect x="250" y="235" width="500" height="4" rx="2" fill={`url(#glowRed-${uniqueId})`} />
-                    <circle cx="500" cy="237" r="8" fill={`url(#ultraGold-${uniqueId})`} />
+                    <rect x="250" y="235" width="500" height="4" rx="2" fill={`url(#${redGradId})`} />
+                    <circle cx="500" cy="237" r="8" fill={`url(#${goldGradId})`} />
 
                     {/* Secondary Tracked Text - Bolded for readability when small */}
                     <text 
