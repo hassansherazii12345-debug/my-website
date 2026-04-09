@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
@@ -39,21 +40,37 @@
 
   <!-- JSON-LD Local Restaurant Schema Data (This is the "Secret Sauce" for Google's #1 Ranking) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Greg's Pizza",
-    "alternateName": ["gregspizza", "gregspizza38", "gregspizzaroute38", "Greggs Pizza", "Gregs Pizza MA", "Greg's Pizza Route 38"],
-    "description": "Authentic, fresh, and delicious pizza located on Route 38 in Massachusetts. Known for high-quality ingredients and incredible taste.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Route 38",
-      "addressRegion": "MA",
-      "addressCountry": "US"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Greg's Pizza",
+      "alternateName": ["gregspizza", "gregspizza38", "gregspizzaroute38", "Greggs Pizza", "Gregs Pizza MA", "Greg's Pizza Route 38"],
+      "description": "Authentic, fresh, and delicious pizza located on Route 38 in Massachusetts. Known for high-quality ingredients and incredible taste.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Route 38",
+        "addressRegion": "MA",
+        "addressCountry": "US"
+      },
+      "url": "https://gregspizza.com/",
+      "logo": "https://gregspizza.com/favicon.png",
+      "servesCuisine": "Pizza",
+      "priceRange": "$$"
     },
-    "servesCuisine": "Pizza",
-    "priceRange": "$$"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Greg's Pizza",
+      "alternateName": ["gregspizza", "gregspizza38", "gregspizzaroute38"],
+      "url": "https://gregspizza.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gregspizza.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
   </script>
   <script>
     // Site-wide Zoom Prevention (Browser Desktop & Mobile)
