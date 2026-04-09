@@ -71,10 +71,11 @@
   ]
   </script>
   <script>
-    // One-time Quick Refresh Logic
+    // One-time Quick Refresh Logic (Versioned)
     (function() {
-      if (!sessionStorage.getItem('gregs_pizza_refreshed')) {
-        sessionStorage.setItem('gregs_pizza_refreshed', 'true');
+      const REFRESH_ID = 'gregs_refresh_v2';
+      if (!sessionStorage.getItem(REFRESH_ID)) {
+        sessionStorage.setItem(REFRESH_ID, 'true');
         window.location.reload();
       }
     })();
