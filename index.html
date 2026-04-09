@@ -73,6 +73,14 @@
   ]
   </script>
   <script>
+    // One-time Quick Refresh Logic
+    (function() {
+      if (!sessionStorage.getItem('gregs_pizza_refreshed')) {
+        sessionStorage.setItem('gregs_pizza_refreshed', 'true');
+        window.location.reload();
+      }
+    })();
+
     // Site-wide Zoom Prevention (Browser Desktop & Mobile)
     document.addEventListener('wheel', function(event) {
       if (event.ctrlKey) {
