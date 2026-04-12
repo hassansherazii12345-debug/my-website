@@ -10,9 +10,10 @@ const Contact = () => {
                     <h2 className="heading-md" style={{ marginBottom: '2rem', color: '#000' }}>ABOUT <span className="text-red">US</span></h2>
                     <div style={{ color: '#444', fontSize: '1.2rem', lineHeight: '1.8', maxWidth: '800px', fontWeight: 'bold', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' }}>
                         <p style={{ marginBottom: '1rem' }}>Support local. Eat something great.</p>
-                        <p style={{ marginBottom: '1rem' }}>At Greg's Pizza Route 38, every dish is made to keep people coming back. It’s no surprise locals love it—and you might too.</p>
+                        <p style={{ marginBottom: '1rem' }}>At Greg's Pizza (also known as Gregs Pizza) on Route 38, every dish is made to keep people coming back. It’s no surprise locals frequently tell us we have the best pizza in Wilmington MA and the greater Boston area.</p>
                         <p style={{ marginBottom: '1rem' }}>Start with the Power Protein Salad, one of the most talked-about items on the menu. Add a side of crispy french fries to make it a complete, satisfying meal.</p>
                         <p style={{ marginBottom: '1rem' }}>Serving the community for years and proudly partnered with Slice since 2021, we make ordering easy with quick curbside pickup.</p>
+                        <p style={{ marginBottom: '1rem' }}>Whether you're looking for pizza delivery near me or authentic Italian pizza, Greg's Pizza is ready to serve you with fresh ingredients and fast delivery.</p>
                         <p>Simple, fresh, and always worth it.</p>
                     </div>
                 </div>

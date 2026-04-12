@@ -13,6 +13,7 @@
     visibility: hidden; /* FOUC Prevention: Only show when GSAP is ready */
     opacity: 0; /* Extra safety for FOUC */
     touch-action: pan-y;
+    
 }
 
 /* --- Right Sideline Transparent Vegetables --- */

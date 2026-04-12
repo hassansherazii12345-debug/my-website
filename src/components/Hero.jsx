@@ -100,7 +100,7 @@ const Hero = () => {
             <div className="container hero-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                 <div className="hero-text-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                     <div className="hero-title-wrapper mt-4">
-                        <h1 className="hero-title-line heading-lg text-white font-bold text-shadow-strong">GREG'S PIZZA ROUTE 38</h1>
+                        <h2 className="hero-title-line heading-lg text-white font-bold text-shadow-strong">GREG'S PIZZA ROUTE 38</h2>
                     </div>
                     <div className="hero-buttons hero-title-wrapper mt-4">
                         <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none' }}>

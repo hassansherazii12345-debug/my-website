@@ -160,7 +160,7 @@ const PizzaAssembly = () => {
 
             {/* Pizza Layer */}
             <div className="pizza-wrapper">
-                <div className="pizza-container">
+                <div className="pizza-container" role="img" aria-label="Delicious Authentic Pizza in Boston and Wilmington MA">
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
                         <div key={i} className={`slice slice-${i}`}></div>
                     ))}
@@ -185,7 +185,7 @@ const PizzaAssembly = () => {
             </div>
             <div className="scooter-scene">
                 <div className="scooter-rotator">
-                    <img src="/scooter.png" className="scooter-img" alt="Delivery Scooter" />
+                    <img src="/scooter.png" className="scooter-img" alt="Fast Pizza Delivery Scooter in Boston and Wilmington MA" />
                 </div>
             </div>
 

@@ -79,7 +79,7 @@ const FloatingIngredients = () => {
         switch (type) {
             case 'pepperoni':
                 return (
-                    <svg width={size} height={size} viewBox="0 0 100 100">
+                    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Fresh Pepperoni - Greg's Pizza Ingredients">
                         <circle cx="50" cy="50" r="45" fill="#db3b31" stroke="#000" strokeWidth="5" />
                         <circle cx="35" cy="35" r="5" fill="#8b1a13" opacity="0.4" />
                         <circle cx="65" cy="45" r="7" fill="#8b1a13" opacity="0.4" />
@@ -87,21 +87,21 @@ const FloatingIngredients = () => {
                 );
             case 'mushroom':
                 return (
-                    <svg width={size} height={size} viewBox="0 0 100 100">
+                    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Fresh Mushroom - Greg's Pizza Ingredients">
                         <path d="M50 20 C30 20 20 40 20 55 C20 65 30 70 50 70 C70 70 80 65 80 55 C80 40 70 20 50 20 Z" fill="#fffcf0" stroke="#000" strokeWidth="5" />
                         <path d="M40 70 L40 85 C40 90 60 90 60 85 L60 70 Z" fill="#e8d8c8" stroke="#000" strokeWidth="5" />
                     </svg>
                 );
             case 'olive':
                 return (
-                    <svg width={size} height={size} viewBox="0 0 100 100">
+                    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Black Olive - Greg's Pizza Ingredients">
                         <circle cx="50" cy="50" r="32" fill="#111" stroke="#000" strokeWidth="5" />
                         <circle cx="50" cy="50" r="10" fill="#333" />
                     </svg>
                 );
             case 'basil':
                 return (
-                    <svg width={size} height={size} viewBox="0 0 100 100">
+                    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Fresh Basil - Greg's Pizza Ingredients">
                         <path d="M50 80 C20 80 10 50 50 20 C90 50 80 80 50 80 Z" fill="#4a7c44" stroke="#000" strokeWidth="5" />
                         <path d="M50 80 L50 35" stroke="#000" strokeWidth="3" fill="none" />
                     </svg>

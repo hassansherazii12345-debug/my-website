@@ -21,6 +21,7 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 maxWidth: '100%',
+                maxWidth: '100%',
                 margin: '0 auto',
                 overflow: 'visible',
                 // Placed the drop-shadow safely on the div to prevent SVG hardware acceleration blackout on iOS
@@ -37,6 +38,8 @@ const MeltedCheeseTitle = ({ className = '', style = {} }) => {
                     height: 'auto',
                     overflow: 'visible',
                 }}
+                role="img"
+                aria-label="Greg's Pizza Route 38"
             >
                 <defs>
                     <linearGradient id={goldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
