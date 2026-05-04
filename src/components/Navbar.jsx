@@ -53,7 +53,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-order-ahead nav-item" style={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <a href="https://www.gregspizzaroute38ma.com/#menu" target="_blank" rel="noopener noreferrer" className="order-ahead-badge" style={{ textDecoration: 'none' }}>ORDER AHEAD</a>
+                    <a href="https://order.toasttab.com/online/gregs-pizza-route-38-101-main-street" target="_blank" rel="noopener noreferrer" className="order-ahead-badge" style={{ textDecoration: 'none' }}>ORDER AHEAD</a>
                 </div>
 
                 <div className="nav-right" style={{ display: 'flex', justifyContent: 'flex-end', width: '25%' }}>
@@ -149,8 +149,8 @@ const Navbar = () => {
                     <div className="mobile-nav-links" style={{ display: 'flex', flexDirection: 'column', gap: '3rem', flexGrow: 1, marginTop: '2rem' }}>
                         {[
                             { label: 'HOME', action: scrollToTop },
-                            { label: 'ORDER AHEAD', href: "https://www.gregspizzaroute38ma.com/#menu", isTargetBlank: true },
-                            { label: 'VIEW MENU', href: "https://www.gregspizzaroute38ma.com/#menu", isTargetBlank: true },
+                            { label: 'ORDER AHEAD', href: "https://order.toasttab.com/online/gregs-pizza-route-38-101-main-street", isTargetBlank: true },
+                            { label: 'VIEW MENU', href: "https://order.toasttab.com/online/gregs-pizza-route-38-101-main-street", isTargetBlank: true },
                             { label: 'ABOUT US', action: scrollToAbout }
                         ].map((item, idx) => (
                             <a 

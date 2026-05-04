@@ -103,10 +103,10 @@ const Hero = () => {
                         <h2 className="hero-title-line heading-lg text-white font-bold text-shadow-strong">GREG'S PIZZA ROUTE 38</h2>
                     </div>
                     <div className="hero-buttons hero-title-wrapper mt-4">
-                        <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none' }}>
+                        <a href="https://order.toasttab.com/online/gregs-pizza-route-38-101-main-street" target="_blank" rel="noopener noreferrer" className="btn-red" style={{ textDecoration: 'none' }}>
                             START ORDER
                         </a>
-                        <a href="https://www.gregspizzaroute38ma.com/#menu" className="btn-red" style={{ textDecoration: 'none' }}>
+                        <a href="https://order.toasttab.com/online/gregs-pizza-route-38-101-main-street" target="_blank" rel="noopener noreferrer" className="btn-red" style={{ textDecoration: 'none' }}>
                             VIEW MENU
                         </a>
                     </div>
